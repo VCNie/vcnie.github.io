@@ -1,7 +1,6 @@
 /*
 =================================
 VCNie Website JavaScript
-Apple Style Interaction
 =================================
 */
 
@@ -15,59 +14,70 @@ const themeButton =
 document.getElementById("theme");
 
 
-// 读取用户设置
 
-if(localStorage.getItem("theme") === "dark"){
+if(
+localStorage.getItem("theme")
+==="dark"
+){
 
-    document.body.classList.add("dark");
+
+document.body.classList.add("dark");
+
 
 }
 
 
-
-// 点击切换
 
 if(themeButton){
 
-themeButton.onclick=function(){
+
+themeButton.addEventListener(
+"click",
+()=>{
 
 
-    document.body.classList.toggle("dark");
+document.body.classList.toggle("dark");
 
 
-    if(
-    document.body.classList.contains("dark")
-    ){
 
-        localStorage.setItem(
-        "theme",
-        "dark"
-        );
+if(
+document.body.classList.contains("dark")
+){
 
 
-    }else{
+localStorage.setItem(
+"theme",
+"dark"
+);
 
 
-        localStorage.setItem(
-        "theme",
-        "light"
-        );
+
+}else{
 
 
-    }
+localStorage.setItem(
+"theme",
+"light"
+);
 
-
-};
 
 
 }
+
+
+
+});
+
+
+}
+
 
 
 
 
 
 /* =========================
-   滚动导航栏效果
+   导航栏滚动
 ========================= */
 
 
@@ -81,23 +91,22 @@ window.addEventListener(
 ()=>{
 
 
-if(window.scrollY > 50){
+if(window.scrollY>60){
 
 
-    navbar.style.width="85%";
-
-
-    navbar.style.top="10px";
+navbar.classList.add(
+"scrolled"
+);
 
 
 
 }else{
 
 
-    navbar.style.width="90%";
+navbar.classList.remove(
+"scrolled"
+);
 
-
-    navbar.style.top="20px";
 
 
 }
@@ -113,8 +122,13 @@ if(window.scrollY > 50){
 
 
 /* =========================
-   滚动出现动画
+   卡片动画
 ========================= */
+
+
+const cards =
+document.querySelectorAll(".card");
+
 
 
 const observer =
@@ -134,6 +148,7 @@ entry.target.classList.add(
 );
 
 
+
 }
 
 
@@ -143,7 +158,7 @@ entry.target.classList.add(
 },
 {
 
-threshold:.15
+threshold:.2
 
 }
 
@@ -152,18 +167,12 @@ threshold:.15
 
 
 
-document
-.querySelectorAll(".card")
-.forEach(
+cards.forEach(
 (card)=>{
 
 
-card.classList.add(
-"hidden"
-);
-
-
 observer.observe(card);
+
 
 
 });
