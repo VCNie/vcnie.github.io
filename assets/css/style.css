@@ -761,8 +761,24 @@ float 12s infinite alternate;
 body.dark{
 
 
-    background:#000;
+   background:
 
+
+radial-gradient(
+circle at 20% 20%,
+rgba(0,113,227,.25),
+transparent 35%
+),
+
+
+radial-gradient(
+circle at 80% 70%,
+rgba(168,85,247,.25),
+transparent 35%
+),
+
+
+#000;
 
     color:white;
 
