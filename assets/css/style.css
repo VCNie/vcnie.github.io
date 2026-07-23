@@ -1,6 +1,6 @@
 /* =========================
 VCNie Website
-Apple Liquid Glass Style
+Apple Liquid Glass UI
 ========================= */
 
 /* =========================
@@ -8,11 +8,17 @@ Apple Liquid Glass Style
 ========================= */
 
 * {
+
   box-sizing: border-box;
-  }
+
+}
 
 html {
+
+```
 scroll-behavior: smooth;
+```
+
 }
 
 body {
@@ -20,53 +26,83 @@ body {
 ```
 margin: 0;
 
+
 font-family:
+
     -apple-system,
+
     BlinkMacSystemFont,
+
     "SF Pro Display",
+
     "PingFang SC",
+
     "Helvetica Neue",
+
     Arial,
+
     sans-serif;
+
 
 color: #111;
 
+
 min-height: 100vh;
+
 
 overflow-x: hidden;
 
+
 background:
 
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(0, 113, 227, .18),
-        transparent 35%
-    ),
 
     radial-gradient(
-        circle at 80% 70%,
-        rgba(168, 85, 247, .18),
+
+        circle at 20% 20%,
+
+        rgba(0, 113, 227, .20),
+
         transparent 35%
+
     ),
+
+
+    radial-gradient(
+
+        circle at 80% 70%,
+
+        rgba(168, 85, 247, .20),
+
+        transparent 35%
+
+    ),
+
 
     linear-gradient(
+
         135deg,
+
         #ffffff,
+
         #e9eef5
+
     );
+
 
 background-attachment: fixed;
 
+
 transition:
+
     background .4s ease,
+
     color .4s ease;
 ```
 
 }
 
 /* =========================
-Advanced Liquid Glass
-顶部导航栏
+Liquid Glass 导航栏
 ========================= */
 
 .navbar {
@@ -74,63 +110,88 @@ Advanced Liquid Glass
 ```
 position: fixed;
 
+
 top: 20px;
+
 
 left: 50%;
 
+
 transform: translateX(-50%);
+
 
 width: 90%;
 
+
 max-width: 1200px;
 
-padding: 14px 30px;
+
+height: 66px;
+
+
+padding: 8px 12px;
+
 
 display: flex;
 
-justify-content: space-between;
 
 align-items: center;
 
 
+justify-content: space-between;
+
+
 /*
-核心液态玻璃材质
+液态玻璃主体
 */
 
 background:
 
+
     linear-gradient(
+
         135deg,
-        rgba(255, 255, 255, .48),
-        rgba(255, 255, 255, .18)
+
+        rgba(255, 255, 255, .42),
+
+        rgba(255, 255, 255, .12)
+
     );
 
 
+/*
+背景折射
+*/
+
 backdrop-filter:
 
-    blur(35px)
-    saturate(200%)
-    contrast(110%);
+
+    blur(24px)
+
+    saturate(180%);
 
 
 -webkit-backdrop-filter:
 
-    blur(35px)
-    saturate(200%)
-    contrast(110%);
+
+    blur(24px)
+
+    saturate(180%);
 
 
 /*
-玻璃边缘
+外部玻璃边缘
 */
 
 border:
 
+
     1px solid
-    rgba(255, 255, 255, .75);
+
+    rgba(255, 255, 255, .72);
 
 
-border-radius: 32px;
+border-radius: 24px;
 
 
 /*
@@ -139,74 +200,61 @@ border-radius: 32px;
 
 box-shadow:
 
-    0 12px 40px
+
+    0 12px 35px
+
     rgba(0, 0, 0, .12),
 
+
     inset 0 1px 0
+
     rgba(255, 255, 255, .95),
 
-    inset 0 -1px 0
+
+    inset 1px 0 0
+
+    rgba(255, 255, 255, .35),
+
+
+    inset -1px 0 0
+
     rgba(255, 255, 255, .25),
 
-    inset 0 0 20px
-    rgba(255, 255, 255, .15);
+
+    inset 0 -1px 0
+
+    rgba(0, 0, 0, .08),
 
 
-z-index: 100;
+    inset 0 0 18px
+
+    rgba(255, 255, 255, .22);
 
 
 overflow: hidden;
 
 
+z-index: 100;
+
+
 transition:
+
 
     width .4s ease,
 
-    top .4s ease,
+    height .4s ease,
 
-    padding .4s ease,
+    top .4s ease,
 
     border-radius .4s ease,
 
-    box-shadow .4s ease,
-
-    background .4s ease;
+    box-shadow .4s ease;
 ```
 
 }
 
 /* =========================
-导航栏滚动缩小
-========================= */
-
-.navbar.scrolled {
-
-```
-top: 10px;
-
-width: 80%;
-
-padding: 10px 25px;
-
-border-radius: 24px;
-
-
-box-shadow:
-
-    0 15px 45px
-    rgba(0, 0, 0, .14),
-
-    inset 0 1px 0
-    rgba(255, 255, 255, .9),
-
-    inset 0 0 20px
-    rgba(255, 255, 255, .12);
-```
-
-}
-
-/* =========================
-液态玻璃顶部高光
+第一层：彩色玻璃折射
 ========================= */
 
 .navbar::before {
@@ -214,44 +262,75 @@ box-shadow:
 ```
 content: "";
 
+
 position: absolute;
+
 
 inset: 0;
 
+
 pointer-events: none;
 
-border-radius: inherit;
+
+z-index: 0;
 
 
 background:
 
+
+    radial-gradient(
+
+        circle at 0% 0%,
+
+        rgba(0, 113, 227, .28),
+
+        transparent 38%
+
+    ),
+
+
+    radial-gradient(
+
+        circle at 100% 0%,
+
+        rgba(168, 85, 247, .24),
+
+        transparent 35%
+
+    ),
+
+
+    radial-gradient(
+
+        circle at 50% 120%,
+
+        rgba(255, 255, 255, .25),
+
+        transparent 45%
+
+    ),
+
+
     linear-gradient(
 
-        120deg,
+        180deg,
 
-        rgba(255, 255, 255, .65) 0%,
+        rgba(255, 255, 255, .22),
 
-        rgba(255, 255, 255, .18) 20%,
+        transparent 55%,
 
-        transparent 45%,
-
-        transparent 70%,
-
-        rgba(255, 255, 255, .22) 100%
+        rgba(255, 255, 255, .12)
 
     );
 
 
-opacity: .8;
-
-
-mix-blend-mode: screen;
+opacity: .95;
 ```
 
 }
 
 /* =========================
-动态玻璃反光
+第二层：玻璃表面高光
 ========================= */
 
 .navbar::after {
@@ -259,70 +338,80 @@ mix-blend-mode: screen;
 ```
 content: "";
 
+
 position: absolute;
 
-width: 180px;
 
-height: 100%;
+inset: 1px;
 
-top: 0;
-
-left: -220px;
 
 pointer-events: none;
 
-transform: skewX(-20deg);
+
+z-index: 1;
+
+
+border-radius: 23px;
 
 
 background:
 
+
     linear-gradient(
 
-        90deg,
+        115deg,
 
-        transparent,
+        rgba(255, 255, 255, .60),
 
-        rgba(255, 255, 255, .45),
+        transparent 22%,
 
-        transparent
+        transparent 68%,
+
+        rgba(255, 255, 255, .18)
 
     );
 
 
-opacity: .5;
-
-
-animation:
-
-    glassReflection 8s
-    ease-in-out
-    infinite;
+opacity: .78;
 ```
 
 }
 
-@keyframes glassReflection {
+/* =========================
+滚动后导航栏
+========================= */
+
+.navbar.scrolled {
 
 ```
-0% {
-
-    left: -220px;
-
-}
+top: 10px;
 
 
-45% {
-
-    left: 120%;
-
-}
+width: 80%;
 
 
-100% {
+height: 58px;
 
-    left: 120%;
 
-}
+border-radius: 22px;
+
+
+box-shadow:
+
+
+    0 18px 45px
+
+    rgba(0, 0, 0, .18),
+
+
+    inset 0 1px 0
+
+    rgba(255, 255, 255, .9),
+
+
+    inset 0 0 20px
+
+    rgba(255, 255, 255, .2);
 ```
 
 }
@@ -336,11 +425,15 @@ Logo
 ```
 position: relative;
 
-z-index: 2;
+
+z-index: 3;
+
 
 font-size: 22px;
 
+
 font-weight: 700;
+
 
 letter-spacing: -.5px;
 ```
@@ -356,9 +449,12 @@ nav {
 ```
 position: relative;
 
-z-index: 2;
+
+z-index: 3;
+
 
 display: flex;
+
 
 align-items: center;
 ```
@@ -370,24 +466,37 @@ nav a {
 ```
 position: relative;
 
-margin-left: 10px;
+
+margin-left: 5px;
+
 
 padding: 9px 15px;
 
-border-radius: 18px;
+
+border-radius: 16px;
+
 
 text-decoration: none;
 
+
 color: #333;
+
 
 font-size: 15px;
 
 
+background:
+
+
+    rgba(255, 255, 255, .08);
+
+
 transition:
 
-    color .25s ease,
 
     background .25s ease,
+
+    color .25s ease,
 
     transform .25s ease,
 
@@ -404,11 +513,12 @@ color: #0071e3;
 
 background:
 
+
     linear-gradient(
 
         135deg,
 
-        rgba(255, 255, 255, .45),
+        rgba(255, 255, 255, .48),
 
         rgba(255, 255, 255, .18)
 
@@ -417,24 +527,36 @@ background:
 
 backdrop-filter:
 
+
     blur(15px);
 
 
 -webkit-backdrop-filter:
+
 
     blur(15px);
 
 
 box-shadow:
 
-    inset 0 1px 0
-    rgba(255, 255, 255, .8),
 
-    0 4px 15px
+    inset 0 1px 0
+
+    rgba(255, 255, 255, .85),
+
+
+    inset 0 -1px 0
+
+    rgba(0, 0, 0, .05),
+
+
+    0 5px 15px
+
     rgba(0, 0, 0, .08);
 
 
 transform:
+
 
     translateY(-1px);
 ```
@@ -450,26 +572,36 @@ transform:
 ```
 position: relative;
 
-z-index: 2;
 
-margin-left: 12px;
+z-index: 3;
+
+
+margin-left: 10px;
+
 
 width: 38px;
 
+
 height: 38px;
+
 
 display: flex;
 
+
 align-items: center;
+
 
 justify-content: center;
 
+
 border: none;
+
 
 border-radius: 50%;
 
 
 background:
+
 
     linear-gradient(
 
@@ -484,28 +616,35 @@ background:
 
 color: #111;
 
+
 cursor: pointer;
+
 
 font-size: 18px;
 
 
 backdrop-filter:
 
+
     blur(15px);
 
 
 -webkit-backdrop-filter:
+
 
     blur(15px);
 
 
 box-shadow:
 
+
     inset 0 1px 0
+
     rgba(255, 255, 255, .75);
 
 
 transition:
+
 
     background .25s ease,
 
@@ -521,27 +660,33 @@ transition:
 ```
 background:
 
+
     rgba(255, 255, 255, .65);
 
 
 transform:
+
 
     scale(1.08);
 
 
 box-shadow:
 
+
     0 5px 15px
+
     rgba(0, 0, 0, .1),
 
+
     inset 0 1px 0
+
     rgba(255, 255, 255, .9);
 ```
 
 }
 
 /* =========================
-页面主体
+主体
 ========================= */
 
 main {
@@ -561,17 +706,24 @@ Hero
 ```
 height: 100vh;
 
+
 display: flex;
+
 
 flex-direction: column;
 
+
 justify-content: center;
+
 
 align-items: center;
 
+
 text-align: center;
 
+
 position: relative;
+
 
 padding-top: 80px;
 ```
@@ -583,13 +735,18 @@ padding-top: 80px;
 ```
 position: relative;
 
+
 z-index: 1;
+
 
 font-size: 100px;
 
+
 font-weight: 700;
 
+
 letter-spacing: -6px;
+
 
 margin: 0;
 ```
@@ -601,11 +758,15 @@ margin: 0;
 ```
 position: relative;
 
+
 z-index: 1;
+
 
 font-size: 36px;
 
+
 margin: 20px 0;
+
 
 font-weight: 600;
 ```
@@ -617,11 +778,15 @@ font-weight: 600;
 ```
 position: relative;
 
+
 z-index: 1;
+
 
 font-size: 20px;
 
+
 line-height: 1.8;
+
 
 color: #666;
 ```
@@ -637,19 +802,26 @@ color: #666;
 ```
 position: absolute;
 
+
 border-radius: 50%;
+
 
 filter: blur(120px);
 
+
 opacity: .35;
+
 
 z-index: -1;
 
 
 animation:
 
+
     float 12s
+
     infinite
+
     alternate;
 ```
 
@@ -660,11 +832,15 @@ animation:
 ```
 width: 350px;
 
+
 height: 350px;
+
 
 background: #0071e3;
 
+
 top: 10%;
+
 
 left: 20%;
 ```
@@ -676,11 +852,15 @@ left: 20%;
 ```
 width: 300px;
 
+
 height: 300px;
+
 
 background: #a855f7;
 
+
 right: 20%;
+
 
 bottom: 10%;
 ```
@@ -694,6 +874,7 @@ from {
 
     transform:
 
+
         translateY(0);
 
 }
@@ -702,6 +883,7 @@ from {
 to {
 
     transform:
+
 
         translateY(-80px);
 
@@ -719,11 +901,15 @@ Hero 按钮
 ```
 position: relative;
 
+
 z-index: 2;
+
 
 display: flex;
 
+
 gap: 20px;
+
 
 margin-top: 40px;
 ```
@@ -735,18 +921,24 @@ margin-top: 40px;
 ```
 padding:
 
+
     14px 35px;
+
 
 border-radius: 30px;
 
+
 text-decoration: none;
 
+
 background: #0071e3;
+
 
 color: white;
 
 
 transition:
+
 
     transform .3s ease,
 
@@ -760,10 +952,12 @@ transition:
 ```
 transform:
 
+
     scale(1.05);
 
 
 box-shadow:
+
 
     0 10px 25px
 
@@ -777,6 +971,7 @@ box-shadow:
 ```
 background:
 
+
     rgba(255, 255, 255, .5);
 
 
@@ -785,10 +980,12 @@ color: #111;
 
 backdrop-filter:
 
+
     blur(15px);
 
 
 -webkit-backdrop-filter:
+
 
     blur(15px);
 ```
@@ -796,7 +993,7 @@ backdrop-filter:
 }
 
 /* =========================
-卡片区域
+卡片
 ========================= */
 
 .cards {
@@ -804,7 +1001,9 @@ backdrop-filter:
 ```
 display: grid;
 
+
 grid-template-columns:
+
 
     repeat(
 
@@ -817,6 +1016,7 @@ grid-template-columns:
 
 gap: 25px;
 
+
 padding: 50px;
 ```
 
@@ -827,33 +1027,41 @@ padding: 50px;
 ```
 padding: 35px;
 
+
 border-radius: 30px;
 
 
 background:
+
 
     rgba(255, 255, 255, .45);
 
 
 backdrop-filter:
 
+
     blur(30px);
 
 
 -webkit-backdrop-filter:
+
 
     blur(30px);
 
 
 border:
 
+
     1px solid
+
     rgba(255, 255, 255, .4);
 
 
 box-shadow:
 
+
     0 10px 30px
+
     rgba(0, 0, 0, .08);
 
 
@@ -862,10 +1070,12 @@ opacity: 0;
 
 transform:
 
+
     translateY(50px);
 
 
 transition:
+
 
     opacity .8s ease,
 
@@ -884,6 +1094,7 @@ opacity: 1;
 
 transform:
 
+
     translateY(0);
 ```
 
@@ -894,13 +1105,17 @@ transform:
 ```
 transform:
 
+
     translateY(-10px)
+
     scale(1.02);
 
 
 box-shadow:
 
+
     0 20px 45px
+
     rgba(0, 0, 0, .12);
 ```
 
@@ -960,26 +1175,31 @@ background:
 
         135deg,
 
-        rgba(50, 50, 58, .62),
+        rgba(55, 55, 65, .58),
 
-        rgba(20, 20, 25, .35)
+        rgba(20, 20, 28, .32)
 
     );
 
 
 backdrop-filter:
 
-    blur(35px)
+
+    blur(24px)
+
     saturate(180%);
 
 
 -webkit-backdrop-filter:
 
-    blur(35px)
+
+    blur(24px)
+
     saturate(180%);
 
 
 border-color:
+
 
     rgba(255, 255, 255, .28);
 
@@ -987,16 +1207,24 @@ border-color:
 box-shadow:
 
 
-    0 15px 50px
-    rgba(0, 0, 0, .45),
+    0 18px 50px
+
+    rgba(0, 0, 0, .5),
 
 
     inset 0 1px 0
-    rgba(255, 255, 255, .35),
+
+    rgba(255, 255, 255, .45),
+
+
+    inset 1px 0 0
+
+    rgba(255, 255, 255, .2),
 
 
     inset 0 0 25px
-    rgba(255, 255, 255, .08);
+
+    rgba(255, 255, 255, .1);
 ```
 
 }
@@ -1018,7 +1246,16 @@ body.dark nav a:hover {
 ```
 background:
 
-    rgba(255, 255, 255, .12);
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(255, 255, 255, .2),
+
+        rgba(255, 255, 255, .06)
+
+    );
 
 
 color: white;
@@ -1035,6 +1272,7 @@ body.dark #theme {
 ```
 background:
 
+
     rgba(255, 255, 255, .12);
 
 
@@ -1047,6 +1285,7 @@ body.dark #theme:hover {
 
 ```
 background:
+
 
     rgba(255, 255, 255, .22);
 ```
@@ -1061,6 +1300,7 @@ body.dark .card {
 
 ```
 background:
+
 
     rgba(30, 30, 30, .6);
 ```
@@ -1088,6 +1328,7 @@ body.dark .hero-buttons a:last-child {
 ```
 background:
 
+
     rgba(255, 255, 255, .15);
 
 
@@ -1107,9 +1348,14 @@ color: white;
 
     width: 95%;
 
+
+    height: 60px;
+
+
     padding:
 
-        12px 18px;
+
+        8px 14px;
 
 }
 
@@ -1117,6 +1363,9 @@ color: white;
 .navbar.scrolled {
 
     width: 92%;
+
+
+    height: 54px;
 
 }
 
@@ -1131,6 +1380,7 @@ nav a {
 .hero {
 
     padding-left: 20px;
+
 
     padding-right: 20px;
 
@@ -1161,6 +1411,7 @@ nav a {
 .hero-buttons {
 
     flex-direction: column;
+
 
     gap: 12px;
 
