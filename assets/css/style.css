@@ -4,75 +4,44 @@
 ========================= */
 
 
+/* =========================
+   全局基础
+========================= */
+
 *{
+
     box-sizing:border-box;
+
 }
 
 
 html{
-    scroll-behavior:smooth;
-}
 
+    scroll-behavior:smooth;
+
+}
 
 
 body{
 
     margin:0;
 
+
     font-family:
+
     -apple-system,
+
     BlinkMacSystemFont,
+
     "SF Pro Display",
+
     "PingFang SC",
+
     "Helvetica Neue",
+
     Arial,
+
     sans-serif;
-
-
-    margin:0;
-
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"SF Pro Display",
-"PingFang SC",
-"Helvetica Neue",
-Arial,
-sans-serif;
-
-
-color:#111;
-
-
-min-height:100vh;
-
-
-background:
-
-radial-gradient(
-circle at 20% 20%,
-rgba(0,113,227,.18),
-transparent 35%
-),
-
-radial-gradient(
-circle at 80% 70%,
-rgba(168,85,247,.18),
-transparent 35%
-),
-
-linear-gradient(
-135deg,
-#ffffff,
-#e9eef5
-);
-
-
-
-background-attachment:fixed;
-
-
-transition:.4s;
 
 
     color:#111;
@@ -81,22 +50,62 @@ transition:.4s;
     min-height:100vh;
 
 
+    overflow-x:hidden;
+
+
+    background:
+
+
+    radial-gradient(
+
+        circle at 20% 20%,
+
+        rgba(0,113,227,.18),
+
+        transparent 35%
+
+    ),
+
+
+    radial-gradient(
+
+        circle at 80% 70%,
+
+        rgba(168,85,247,.18),
+
+        transparent 35%
+
+    ),
+
+
+    linear-gradient(
+
+        135deg,
+
+        #ffffff,
+
+        #e9eef5
+
+    );
+
+
+    background-attachment:fixed;
+
+
     transition:
-    background .4s,
-    color .4s;
+
+    background .4s ease,
+
+    color .4s ease;
 
 }
 
 
-
-
 /* =========================
-   导航栏
+   Liquid Glass 导航栏
 ========================= */
 
-
 .navbar{
-
 
     position:fixed;
 
@@ -107,9 +116,7 @@ transition:.4s;
     left:50%;
 
 
-    transform:
-    translateX(-50%);
-
+    transform:translateX(-50%);
 
 
     width:90%;
@@ -118,10 +125,7 @@ transition:.4s;
     max-width:1200px;
 
 
-
-    padding:
-    14px 30px;
-
+    padding:14px 30px;
 
 
     display:flex;
@@ -133,53 +137,86 @@ transition:.4s;
     align-items:center;
 
 
-
     background:
-    rgba(255,255,255,.55);
 
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.62),
+
+        rgba(255,255,255,.28)
+
+    );
 
 
     backdrop-filter:
-    blur(30px);
+
+    blur(30px)
+
+    saturate(180%);
 
 
     -webkit-backdrop-filter:
-    blur(30px);
 
+    blur(30px)
+
+    saturate(180%);
+
+
+    border:
+
+    1px solid
+
+    rgba(255,255,255,.65);
 
 
     border-radius:30px;
 
 
-
-    border:
-    1px solid
-    rgba(255,255,255,.4);
-
-
-
     box-shadow:
-    0 10px 40px
-    rgba(0,0,0,.08);
 
+
+    0 8px 30px
+
+    rgba(0,0,0,.08),
+
+
+    inset 0 1px 0
+
+    rgba(255,255,255,.8),
+
+
+    inset 0 -1px 0
+
+    rgba(255,255,255,.2);
 
 
     z-index:100;
 
 
+    transition:
 
-    transition:.35s;
 
+    width .4s ease,
 
+    top .4s ease,
+
+    padding .4s ease,
+
+    border-radius .4s ease,
+
+    box-shadow .4s ease,
+
+    background .4s ease;
 
 }
 
 
-
-
+/* 导航栏滚动后 */
 
 .navbar.scrolled{
-
 
     top:10px;
 
@@ -187,24 +224,74 @@ transition:.4s;
     width:80%;
 
 
-    padding:
-    10px 25px;
+    padding:10px 25px;
 
+
+    border-radius:24px;
 
 
     box-shadow:
-    0 15px 40px
-    rgba(0,0,0,.15);
 
+
+    0 15px 45px
+
+    rgba(0,0,0,.14),
+
+
+    inset 0 1px 0
+
+    rgba(255,255,255,.8);
 
 }
 
 
+/* 导航栏玻璃高光 */
+
+.navbar::before{
+
+    content:"";
 
 
+    position:absolute;
+
+
+    inset:0;
+
+
+    border-radius:inherit;
+
+
+    background:
+
+
+    linear-gradient(
+
+        120deg,
+
+        rgba(255,255,255,.35),
+
+        transparent 35%,
+
+        transparent 65%,
+
+        rgba(255,255,255,.12)
+
+    );
+
+
+    pointer-events:none;
+
+
+    opacity:.8;
+
+}
+
+
+/* =========================
+   Logo
+========================= */
 
 .logo{
-
 
     font-size:22px;
 
@@ -212,13 +299,101 @@ transition:.4s;
     font-weight:700;
 
 
+    letter-spacing:-.5px;
+
 }
 
 
-
-
+/* =========================
+   导航菜单
+========================= */
 
 nav{
+
+    display:flex;
+
+
+    align-items:center;
+
+}
+
+
+nav a{
+
+    position:relative;
+
+
+    margin-left:10px;
+
+
+    padding:9px 15px;
+
+
+    border-radius:18px;
+
+
+    text-decoration:none;
+
+
+    color:#333;
+
+
+    font-size:15px;
+
+
+    transition:
+
+
+    color .25s ease,
+
+    background .25s ease,
+
+    transform .25s ease,
+
+    box-shadow .25s ease;
+
+}
+
+
+nav a:hover{
+
+    color:#0071e3;
+
+
+    background:
+
+
+    rgba(255,255,255,.35);
+
+
+    box-shadow:
+
+
+    inset 0 1px 0
+
+    rgba(255,255,255,.7);
+
+
+    transform:
+
+    translateY(-1px);
+
+}
+
+
+/* =========================
+   深浅模式按钮
+========================= */
+
+#theme{
+
+    margin-left:12px;
+
+
+    width:38px;
+
+
+    height:38px;
 
 
     display:flex;
@@ -227,97 +402,83 @@ nav{
     align-items:center;
 
 
-}
-
-
-
-nav a{
-
-
-    margin-left:25px;
-
-
-    text-decoration:none;
-
-
-
-    color:#333;
-
-
-
-    font-size:15px;
-
-
-
-    transition:.3s;
-
-
-
-}
-
-
-
-nav a:hover{
-
-
-    color:#0071e3;
-
-
-}
-
-
-
-
-#theme{
-
-
-    margin-left:25px;
+    justify-content:center;
 
 
     border:none;
 
 
-    background:transparent;
+    border-radius:50%;
+
+
+    background:
+
+
+    rgba(255,255,255,.3);
+
+
+    color:#111;
 
 
     cursor:pointer;
 
 
-    font-size:20px;
+    font-size:18px;
 
+
+    transition:
+
+
+    background .25s ease,
+
+    transform .25s ease,
+
+    box-shadow .25s ease;
 
 }
 
 
+#theme:hover{
 
+    background:
+
+
+    rgba(255,255,255,.6);
+
+
+    transform:
+
+    scale(1.08);
+
+
+    box-shadow:
+
+
+    0 5px 15px
+
+    rgba(0,0,0,.1);
+
+}
 
 
 /* =========================
-   主体
+   页面主体
 ========================= */
-
 
 main{
 
-
     padding-top:0;
 
-
 }
-
-
 
 
 /* =========================
    Hero
 ========================= */
 
-
 .hero{
 
-
     height:100vh;
-
 
 
     display:flex;
@@ -332,27 +493,18 @@ main{
     align-items:center;
 
 
-
     text-align:center;
-
 
 
     position:relative;
 
 
-
     padding-top:80px;
-
-
 
 }
 
 
-
-
-
 .hero h1{
-
 
     font-size:100px;
 
@@ -360,20 +512,15 @@ main{
     font-weight:700;
 
 
-
     letter-spacing:-6px;
 
 
     margin:0;
 
-
-
 }
 
 
-
 .hero h2{
-
 
     font-size:36px;
 
@@ -383,13 +530,10 @@ main{
 
     font-weight:600;
 
-
 }
 
 
-
 .hero p{
-
 
     font-size:20px;
 
@@ -399,21 +543,14 @@ main{
 
     color:#666;
 
-
-
 }
-
-
-
 
 
 /* =========================
    动态光球
 ========================= */
 
-
 .orb{
-
 
     position:absolute;
 
@@ -421,35 +558,24 @@ main{
     border-radius:50%;
 
 
-    position:absolute;
+    filter:blur(120px);
 
-border-radius:50%;
 
-filter:blur(120px);
-
-opacity:.35;
-
-animation:
-float 12s infinite alternate;
-
+    opacity:.35;
 
 
     z-index:-1;
 
 
-
     animation:
-    float 10s infinite alternate;
 
+
+    float 12s infinite alternate;
 
 }
 
 
-
-
-
 .orb1{
-
 
     width:350px;
 
@@ -457,9 +583,7 @@ float 12s infinite alternate;
     height:350px;
 
 
-
     background:#0071e3;
-
 
 
     top:10%;
@@ -467,19 +591,10 @@ float 12s infinite alternate;
 
     left:20%;
 
-
-
-    opacity:.35;
-
-
 }
 
 
-
-
-
 .orb2{
-
 
     width:300px;
 
@@ -487,64 +602,44 @@ float 12s infinite alternate;
     height:300px;
 
 
-
     background:#a855f7;
-
 
 
     right:20%;
 
 
-
     bottom:10%;
-
-
-
-    opacity:.3;
-
-
 
 }
 
 
-
-
-
 @keyframes float{
-
 
     from{
 
         transform:
+
         translateY(0);
 
     }
 
 
-
     to{
 
-
         transform:
+
         translateY(-80px);
 
-
     }
-
 
 }
 
 
-
-
-
 /* =========================
-   Hero按钮
+   Hero 按钮
 ========================= */
 
-
 .hero-buttons{
-
 
     display:flex;
 
@@ -554,375 +649,439 @@ float 12s infinite alternate;
 
     margin-top:40px;
 
-
-
 }
-
-
 
 
 .hero-buttons a{
 
-
     padding:
+
     14px 35px;
 
 
-
     border-radius:30px;
-
 
 
     text-decoration:none;
 
 
-
     background:#0071e3;
-
 
 
     color:white;
 
 
+    transition:
 
-    transition:.3s;
 
+    transform .3s ease,
 
+    box-shadow .3s ease;
 
 }
-
 
 
 .hero-buttons a:hover{
 
-
     transform:
+
     scale(1.05);
 
 
+    box-shadow:
+
+
+    0 10px 25px
+
+    rgba(0,113,227,.25);
 
 }
 
 
-
-
 .hero-buttons a:last-child{
 
-
     background:
-    rgba(255,255,255,.5);
 
+
+    rgba(255,255,255,.5);
 
 
     color:#111;
 
 
-
     backdrop-filter:
-    blur(15px);
 
+    blur(15px);
 
 
     -webkit-backdrop-filter:
+
     blur(15px);
-
-
 
 }
 
 
-
-
-
 /* =========================
-   卡片
+   卡片区域
 ========================= */
 
-
 .cards{
-
 
     display:grid;
 
 
     grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(250px,1fr)
-    );
 
+    repeat(
+
+        auto-fit,
+
+        minmax(250px,1fr)
+
+    );
 
 
     gap:25px;
 
 
-
     padding:50px;
-
-
 
 }
 
 
-
-
-
 .card{
 
-
     padding:35px;
-
 
 
     border-radius:30px;
 
 
-
     background:
-    rgba(255,255,255,.55);
 
+
+    rgba(255,255,255,.45);
 
 
     backdrop-filter:
-    blur(20px);
 
+    blur(30px);
 
 
     -webkit-backdrop-filter:
-    blur(20px);
 
+    blur(30px);
 
 
     border:
+
+
     1px solid
+
     rgba(255,255,255,.4);
 
 
-
     box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.08);
 
+
+    0 10px 30px
+
+    rgba(0,0,0,.08);
 
 
     opacity:0;
 
 
-
     transform:
+
     translateY(50px);
 
 
-
     transition:
+
+
     opacity .8s ease,
-    transform .8s ease;
 
+    transform .8s ease,
 
+    box-shadow .3s ease;
 
 }
-
-
 
 
 .card.show{
 
-
     opacity:1;
 
 
-
     transform:
+
     translateY(0);
 
-
-
 }
-
 
 
 .card:hover{
 
-
     transform:
-    translateY(-10px);
 
+    translateY(-10px)
+
+    scale(1.02);
+
+
+    box-shadow:
+
+
+    0 20px 45px
+
+    rgba(0,0,0,.12);
 
 }
-
-
 
 
 /* =========================
    深色模式
 ========================= */
 
-
 body.dark{
-
-
-   background:
-
-
-radial-gradient(
-circle at 20% 20%,
-rgba(0,113,227,.25),
-transparent 35%
-),
-
-
-radial-gradient(
-circle at 80% 70%,
-rgba(168,85,247,.25),
-transparent 35%
-),
-
-
-#000;
 
     color:white;
 
 
+    background:
+
+
+    radial-gradient(
+
+        circle at 20% 20%,
+
+        rgba(0,113,227,.25),
+
+        transparent 35%
+
+    ),
+
+
+    radial-gradient(
+
+        circle at 80% 70%,
+
+        rgba(168,85,247,.25),
+
+        transparent 35%
+
+    ),
+
+
+    #000;
 
 }
 
 
+/* 深色导航栏 */
 
 body.dark .navbar{
 
-
     background:
-    rgba(20,20,20,.6);
 
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(35,35,40,.72),
+
+        rgba(20,20,25,.45)
+
+    );
 
 
     border-color:
-    rgba(255,255,255,.15);
 
 
+    rgba(255,255,255,.18);
+
+
+    box-shadow:
+
+
+    0 10px 40px
+
+    rgba(0,0,0,.35),
+
+
+    inset 0 1px 0
+
+    rgba(255,255,255,.2);
 
 }
 
 
-
-
+/* 深色菜单 */
 
 body.dark nav a{
 
-
-    color:white;
-
-
+    color:#f5f5f7;
 
 }
 
 
+body.dark nav a:hover{
+
+    background:
+
+
+    rgba(255,255,255,.12);
+
+
+    color:white;
+
+}
+
+
+/* 深色模式按钮 */
+
+body.dark #theme{
+
+    background:
+
+
+    rgba(255,255,255,.12);
+
+
+    color:white;
+
+}
+
+
+body.dark #theme:hover{
+
+    background:
+
+
+    rgba(255,255,255,.22);
+
+}
+
+
+/* 深色卡片 */
 
 body.dark .card{
 
-
     background:
+
+
     rgba(30,30,30,.6);
-
-
 
 }
 
 
-
+/* 深色 Hero */
 
 body.dark .hero p{
 
-
     color:#aaa;
-
-
 
 }
 
 
-
+/* 深色第二个按钮 */
 
 body.dark .hero-buttons a:last-child{
 
-
     background:
-    rgba(255,255,255,.15);
 
+
+    rgba(255,255,255,.15);
 
 
     color:white;
 
-
-
 }
-
-
-
 
 
 /* =========================
    手机适配
 ========================= */
 
-
 @media(max-width:700px){
 
+    .navbar{
+
+        width:95%;
+
+        padding:
+
+        12px 18px;
+
+    }
 
 
-.navbar{
+    .navbar.scrolled{
+
+        width:92%;
+
+    }
 
 
-    width:95%;
+    nav a{
+
+        display:none;
+
+    }
 
 
+    .hero{
 
-}
+        padding-left:20px;
 
+        padding-right:20px;
 
-
-nav a{
-
-
-    display:none;
+    }
 
 
+    .hero h1{
 
-}
+        font-size:60px;
 
-
-
-.hero h1{
-
-
-    font-size:60px;
+    }
 
 
+    .hero h2{
 
-}
+        font-size:26px;
 
-
-
-.hero h2{
-
-
-    font-size:26px;
+    }
 
 
+    .hero p{
 
-}
+        font-size:17px;
 
-
-
-.cards{
-
-
-    padding:25px;
+    }
 
 
+    .hero-buttons{
 
-}
+        flex-direction:column;
+
+        gap:12px;
+
+    }
 
 
+    .hero-buttons a{
+
+        width:180px;
+
+    }
+
+
+    .cards{
+
+        padding:25px;
+
+    }
 
 }
